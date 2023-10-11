@@ -1,4 +1,4 @@
-package org.acme.kafka.processor;
+package org.acme.kafka.consumer;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
