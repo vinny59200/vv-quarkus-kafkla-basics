@@ -1,10 +1,6 @@
 package org.acme.kafka.processor;
 
-import java.util.Random;
-
 import jakarta.enterprise.context.ApplicationScoped;
-
-import org.acme.kafka.model.Quote;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
@@ -15,17 +11,15 @@ import io.smallrye.reactive.messaging.annotations.Blocking;
  * The result is pushed to the "quotes" Kafka topic.
  */
 @ApplicationScoped
-public class QuotesProcessor {
-
-    private Random random = new Random();
+public class VVConsumer {
 
     @Incoming("requests")
     @Outgoing("quotes")
     @Blocking
-    public Quote process(String quoteRequest) throws InterruptedException {
+    public String process(String msg) throws InterruptedException {
         // simulate some hard working task
         Thread.sleep(200);
-        System.out.println(quoteRequest);
-        return new Quote(quoteRequest, random.nextInt(100));
+        System.out.println(msg);
+        return msg;
     }
 }
